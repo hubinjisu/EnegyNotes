@@ -1,4 +1,4 @@
-package com.bin.enegynotes
+package com.bin.ui
 
 object SampleData {
     // Sample conversation data

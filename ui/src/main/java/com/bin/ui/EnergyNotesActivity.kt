@@ -1,4 +1,4 @@
-package com.bin.enegynotes
+package com.bin.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -18,9 +18,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bin.enegynotes.ui.theme.EnegyNotesTheme
+import com.bin.ui.ui.theme.EnegyNotesTheme
 
-class MainActivity : ComponentActivity() {
+class EnergyNotesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -39,6 +39,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 data class Message(val author: String, val body: String)
 
 @Composable
@@ -53,7 +54,7 @@ fun MessageCard(msg: Message) {
                 .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
         )
         Spacer(modifier = Modifier.width(8.dp))
-        var isExpanded by remember { mutableStateOf(false)}
+        var isExpanded by remember { mutableStateOf(false) }
         Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
             Text(
                 text = msg.author,

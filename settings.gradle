@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "EnegyNotes"
+rootProject.name = "EnergyNotes"
 include ':app'
 include ':ui'

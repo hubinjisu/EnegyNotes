@@ -18,13 +18,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bin.ui.ui.theme.EnegyNotesTheme
+import com.bin.ui.ui.theme.EnergyNotesTheme
 
 class EnergyNotesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            EnegyNotesTheme {
+            EnergyNotesTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -83,7 +83,7 @@ fun Greeting(name: String) {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Dark Mode")
 @Composable
 fun DefaultPreview() {
-    EnegyNotesTheme {
+    EnergyNotesTheme {
         MessageCard(msg = Message("Bin", "Hallo World!"))
     }
 }

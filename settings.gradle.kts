@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "EnergyNotes"
-include ':app'
-include ':ui'
+include(":app")
+include(":ui")

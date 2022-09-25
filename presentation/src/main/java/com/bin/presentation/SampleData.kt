@@ -1,4 +1,6 @@
-package com.bin.ui
+package com.bin.presentation
+
+import com.bin.presentation.model.Message
 
 object SampleData {
     // Sample conversation data

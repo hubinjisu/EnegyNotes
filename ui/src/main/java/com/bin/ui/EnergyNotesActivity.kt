@@ -7,13 +7,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.bin.presentation.SampleData
+import com.bin.presentation.DataViewModel
 import com.bin.presentation.model.Message
 import com.bin.ui.ui.theme.EnergyNotesTheme
 
 class EnergyNotesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel = DataViewModel()
         setContent {
             EnergyNotesTheme {
                 // A surface container using the 'background' color from the theme
@@ -22,7 +23,7 @@ class EnergyNotesActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     MessageCard(msg = Message("Bin", "Hallo World!"))
-                    Conversation(messages = SampleData.conversationSample)
+                    Conversation(viewModel)
                 }
             }
         }

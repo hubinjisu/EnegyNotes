@@ -16,3 +16,4 @@ rootProject.name = "EnergyNotes"
 include(":app")
 include(":ui")
 include(":presentation")
+include(":data")

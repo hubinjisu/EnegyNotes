@@ -36,12 +36,13 @@ android {
 dependencies {
 
     implementation("androidx.core:core-ktx:1.7.0")
-//    implementation("androidx.activity:activity-ktx:1.2.3")
-//    implementation("androidx.fragment:fragment-ktx:1.3.2")
-//    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:2.2.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
-//    implementation("com.google.android.material:material:1.6.1")
-//    testImplementation("junit:junit:4.13.2")
-//    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-//    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+
+    // Room components
+    implementation ("androidx.room:room-ktx:2.3.0")
+    kapt ("androidx.room:room-compiler:2.3.0")
+    androidTestImplementation ("androidx.room:room-testing:2.3.0")
+
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }

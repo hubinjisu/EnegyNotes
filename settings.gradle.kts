@@ -17,3 +17,7 @@ include(":app")
 include(":ui")
 include(":presentation")
 include(":data")
+
+rootProject.children.forEach { subproject ->
+    subproject.buildFileName = "${subproject.name}.gradle.kts"
+}

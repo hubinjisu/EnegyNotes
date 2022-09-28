@@ -1,11 +1,11 @@
 plugins {
     `kotlin-dsl`
+    `java-gradle-plugin`
 }
 
 repositories {
-    mavenCentral()
     google()
-    jcenter()
+    mavenCentral()
 }
 
 val kotlinVersion = "1.6.21"

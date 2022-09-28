@@ -57,19 +57,53 @@ object Libraries {
         const val reflectForTestsOnly = "org.jetbrains.kotlin:kotlin-reflect:$version"
     }
 
-    // Don't forget to bump this in buildSrc/build.gradle.kts as well, there are at least 3 of them!x
-    // Also take a look at object Databinding below
-    private const val androidGradlePluginVersion = "7.2.0"
-    const val androidGradlePlugin = "com.android.tools.build:gradle:$androidGradlePluginVersion"
+    object Android {
+        const val gradlePluginVersion = "7.2.1" // also changes Databinding Compiler version
+        const val gradlePlugin = "com.android.tools.build:gradle:$gradlePluginVersion"
+    }
 
     object AndroidX {
-        object compose {
-            private const val version = "1.2.0-rc02"
+
+        object Compose {
+            // https://developer.android.com/jetpack/androidx/releases/compose-kotlin#pre-release_kotlin_compatibility
+            const val compilerVersion = "1.2.0-rc02"
+            private const val version = "1.1.1"
+
+            object Runtime {
+                const val runtimeLivedata = "androidx.compose.runtime:runtime-livedata:$version"
+                const val runtime = "androidx.compose.runtime:runtime:$version"
+            }
+
+            object Foundation {
+                const val foundation = "androidx.compose.foundation:foundation:$version"
+                const val foundationLayout = "androidx.compose.foundation:foundation-layout:$version"
+            }
+
+            object Ui {
+                const val ui = "androidx.compose.ui:ui:$version"
+                const val uiGraphics = "androidx.compose.ui:ui-graphics:$version"
+                const val uiText = "androidx.compose.ui:ui-text:$version"
+                const val uiUnit = "androidx.compose.ui:ui-unit:$version"
+                const val uiTooling = "androidx.compose.ui:ui-tooling:$version"
+                const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
+                const val uiTestJunit4 = "androidx.compose.ui:ui-test-junit4:$version"
+            }
+
+            object Material {
+                const val material = "androidx.compose.material:material:$version"
+                const val materialIconsCore = "androidx.compose.material:material-icons-core:$version"
+            }
         }
 
         object Databinding {
             private const val version = "7.2.0" // follows AGP versions
             const val compiler = "androidx.databinding:databinding-compiler:$version"
+        }
+
+        object Activity {
+            private const val version = "1.5.0"
+            const val activity = "androidx.activity:activity:$version"
+            const val activityCompose = "androidx.activity:activity-compose:$version"
         }
 
         object Core {
@@ -124,21 +158,29 @@ object Libraries {
             const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
         }
 
-        private const val lifecycleVersion = "2.2.0"
-        const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
-        const val lifecycleLivedata = "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
-        const val lifecycleLivedataCore = "androidx.lifecycle:lifecycle-livedata-core:$lifecycleVersion"
-        const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
-        const val lifecycleReactivestreams = "androidx.lifecycle:lifecycle-reactivestreams:$lifecycleVersion"
-        const val lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-        const val lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion"
-        const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+        object Lifecycle {
+            private const val version = "2.5.0"
+            const val lifecycleLivedataCore = "androidx.lifecycle:lifecycle-livedata-core:$version"
+            const val lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel:$version"
+            const val lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+            const val lifecycleViewmodelSavedState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:$version"
+            const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
+            const val lifecycleCommon = "androidx.lifecycle:lifecycle-common:$version"
+            const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:$version"
+        }
 
         object Navigation {
-            private const val version = "2.3.5"
-            const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
-            const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$version"
+            private const val version = "2.5.0"
             const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
+            const val navigationCommon = "androidx.navigation:navigation-common:$version"
+            const val navigationCompose = "androidx.navigation:navigation-compose:$version"
+            const val navigationRuntime = "androidx.navigation:navigation-runtime:$version"
+        }
+
+        object Hilt {
+            private const val version = "1.0.0"
+            const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:$version"
+            const val hiltCompiler = "androidx.hilt:hilt-compiler:$version"
         }
 
         private const val preferenceVersion = "1.1.1"
@@ -188,12 +230,6 @@ object Libraries {
     private const val awaitilityVersion = "4.1.0"
     const val awaitilityKotlin = "org.awaitility:awaitility-kotlin:$awaitilityVersion"
 
-    object Cucumber {
-        private const val version = "6.10.4"
-        const val java = "io.cucumber:cucumber-java8:$version"
-        const val junit = "io.cucumber:cucumber-junit:$version"
-    }
-
     object Dagger {
         private const val version = "2.42"
         const val dagger = "com.google.dagger:dagger:$version"
@@ -201,6 +237,11 @@ object Libraries {
         const val android = "com.google.dagger:dagger-android:$version"
         const val androidProcessor = "com.google.dagger:dagger-android-processor:$version"
         const val compiler = "com.google.dagger:dagger-compiler:$version"
+
+        const val hiltCore = "com.google.dagger:hilt-core:$version"
+        const val hiltAndroid = "com.google.dagger:hilt-android:$version"
+        const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:$version"
+        const val hiltAndroidGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
     }
 
     private const val easyValidationVersion = "1.0.1"

@@ -23,10 +23,8 @@ object AndroidSdk {
     const val targetSdkVersion = 32
 
     // Keep in sync with Dockerfile's ADDITIONAL_PLATFORMS
-    // https://git.tech.rz.db.de/mtx/handheld/kontrollapp-dockerbuild/-/blob/master/build/Dockerfile
     const val ndkVersion = "21.3.6528147"
 
     // Keep in sync with Dockerfile's BUILD_TOOLS
-    // https://git.tech.rz.db.de/mtx/handheld/kontrollapp-dockerbuild/-/blob/master/build/Dockerfile
     const val buildToolsVersion = "33.0.0"
 }

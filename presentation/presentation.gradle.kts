@@ -2,7 +2,7 @@ import com.bin.build.Libraries.AndroidX
 import com.bin.build.Plugins
 
 plugins {
-//    id(Plugins.androidLibrary)
+//    id(com.bin.build.Plugins.androidLibrary)
 //    kotlin(Plugins.android)
 //    kotlin(Plugins.kapt)
     id("com.android.library")

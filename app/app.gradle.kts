@@ -1,7 +1,9 @@
+import com.bin.build.Projects
+
 plugins {
     id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -44,5 +46,5 @@ android {
 }
 
 dependencies {
-    implementation(project(":ui"))
+    implementation(project(Projects.ui))
 }

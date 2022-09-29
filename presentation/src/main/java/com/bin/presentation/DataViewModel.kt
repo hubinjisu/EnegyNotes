@@ -3,9 +3,11 @@ package com.bin.presentation
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import com.bin.presentation.model.Message
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-
-class DataViewModel : ViewModel() {
+@HiltViewModel
+class DataViewModel @Inject constructor() : ViewModel() {
 
     private val _messages = mutableStateListOf<Message>()
 

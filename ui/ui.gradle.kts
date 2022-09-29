@@ -2,11 +2,12 @@ import com.bin.build.Libraries.AndroidX
 import com.bin.build.Libraries.JUnit
 import com.bin.build.Plugins
 import com.bin.build.Projects
+import com.bin.build.Libraries.Dagger
 
 plugins {
     id("com.android.library")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    kotlin("android")
+    kotlin("kapt")
 //    id(Plugins.androidLibrary)
 //    kotlin(Plugins.android)
 //    kotlin(Plugins.kapt)
@@ -64,6 +65,9 @@ dependencies {
     implementation(AndroidX.Compose.Ui.uiToolingPreview)
     implementation(AndroidX.Compose.Ui.uiTestJunit4)
     implementation(AndroidX.Compose.Material.material)
+
+    api(Dagger.hiltAndroid)
+    implementation(AndroidX.Hilt.hiltNavigationCompose)
 //    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     implementation(AndroidX.Activity.activityCompose)
     testImplementation(JUnit.jUnit)

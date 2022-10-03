@@ -1,14 +1,7 @@
-import com.bin.build.Libraries.AndroidX
-import com.bin.build.Libraries.Dagger
-import com.bin.build.Libraries.timber
-
 plugins {
-//    id(com.bin.build.Plugins.androidLibrary)
-//    kotlin(Plugins.android)
-//    kotlin(Plugins.kapt)
-    id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
+    id(Plugins.androidLibrary)
+    kotlin(Plugins.android)
+    kotlin(Plugins.kapt)
 }
 
 android {
@@ -42,13 +35,13 @@ android {
 
 dependencies {
 
-    implementation(AndroidX.Core.coreKtx)
-    implementation(AndroidX.Lifecycle.lifecycleViewmodelCompose)
-    api(Dagger.hiltCore)
-    api(Dagger.hiltAndroid)
-    implementation(timber)
-    kapt(Dagger.hiltAndroidCompiler)
-    kapt(AndroidX.Hilt.hiltCompiler)
+    implementation(Libraries.AndroidX.Core.coreKtx)
+    implementation(Libraries.AndroidX.Lifecycle.lifecycleViewmodelCompose)
+    api(Libraries.Dagger.hiltCore)
+    api(Libraries.Dagger.hiltAndroid)
+    implementation(Libraries.timber)
+    kapt(Libraries.Dagger.hiltAndroidCompiler)
+    kapt(Libraries.AndroidX.Hilt.hiltCompiler)
 //    testImplementation("junit:junit:4.13.2")
 //    androidTestImplementation("androidx.test.ext:junit:1.1.3")
 }

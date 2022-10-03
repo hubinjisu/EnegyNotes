@@ -27,8 +27,9 @@ class EnergyNotesActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MessageCard(msg = Message("Bin", "Hallo World!"))
-                    Conversation(viewModel)
+//                    MessageCard(msg = Message("Bin", "Hallo World!"))
+//                    Conversation(viewModel)
+                    RecordList()
                 }
             }
         }

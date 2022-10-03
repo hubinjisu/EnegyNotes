@@ -1,9 +1,7 @@
-import com.bin.build.Projects
-
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("kapt")
+    id(Plugins.androidApplication)
+    kotlin(Plugins.android)
+    kotlin(Plugins.kapt)
 }
 
 android {

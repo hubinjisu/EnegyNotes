@@ -1,5 +1,3 @@
-package com.bin.build
-
 object EnergyNotes {
     const val groupId = "com.bin.app"
     const val artifactId = "energyNotes"

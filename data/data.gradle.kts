@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
+    id(Plugins.androidLibrary)
+    kotlin(Plugins.android)
+    kotlin(Plugins.kapt)
 }
 
 android {
@@ -34,15 +34,10 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.core:core-ktx:1.7.0")
-
     // Room components
     implementation ("androidx.room:room-ktx:2.3.0")
     kapt ("androidx.room:room-compiler:2.3.0")
     androidTestImplementation ("androidx.room:room-testing:2.3.0")
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    testImplementation(Libraries.JUnit.jUnit)
 }

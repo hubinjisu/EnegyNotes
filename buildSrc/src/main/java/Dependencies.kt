@@ -1,5 +1,3 @@
-package com.bin.build
-
 import org.gradle.api.artifacts.ExternalModuleDependency
 import org.gradle.api.artifacts.ModuleIdentifier
 import org.gradle.kotlin.dsl.exclude

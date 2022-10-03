@@ -1,16 +1,7 @@
-import com.bin.build.Libraries.AndroidX
-import com.bin.build.Libraries.JUnit
-import com.bin.build.Plugins
-import com.bin.build.Projects
-import com.bin.build.Libraries.Dagger
-
 plugins {
-    id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
-//    id(Plugins.androidLibrary)
-//    kotlin(Plugins.android)
-//    kotlin(Plugins.kapt)
+    id(Plugins.androidLibrary)
+    kotlin(Plugins.android)
+    kotlin(Plugins.kapt)
 }
 
 android {
@@ -49,7 +40,7 @@ android {
         viewBinding = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = AndroidX.Compose.compilerVersion
+        kotlinCompilerExtensionVersion = Libraries.AndroidX.Compose.compilerVersion
     }
     packagingOptions {
         resources {
@@ -60,19 +51,19 @@ android {
 
 dependencies {
     implementation(project(Projects.presentation))
-    implementation(AndroidX.Core.coreKtx)
-    implementation(AndroidX.Compose.Ui.ui)
-    implementation(AndroidX.Compose.Ui.uiToolingPreview)
-    implementation(AndroidX.Compose.Ui.uiTestJunit4)
-    implementation(AndroidX.Compose.Material.material)
+    implementation(Libraries.AndroidX.Core.coreKtx)
+    implementation(Libraries.AndroidX.Compose.Ui.ui)
+    implementation(Libraries.AndroidX.Compose.Ui.uiToolingPreview)
+    implementation(Libraries.AndroidX.Compose.Ui.uiTestJunit4)
+    implementation(Libraries.AndroidX.Compose.Material.material)
 
-    api(Dagger.hiltAndroid)
-    implementation(AndroidX.Hilt.hiltNavigationCompose)
+    api(Libraries.Dagger.hiltAndroid)
+    implementation(Libraries.AndroidX.Hilt.hiltNavigationCompose)
 //    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation(AndroidX.Activity.activityCompose)
-    testImplementation(JUnit.jUnit)
-    testImplementation(AndroidX.Test.extJunit)
-    testImplementation(AndroidX.espresso)
-    androidTestImplementation(AndroidX.Compose.Ui.uiTestJunit4)
-    debugImplementation(AndroidX.Compose.Ui.uiTooling)
+    implementation(Libraries.AndroidX.Activity.activityCompose)
+    testImplementation(Libraries.JUnit.jUnit)
+    testImplementation(Libraries.AndroidX.Test.extJunit)
+    testImplementation(Libraries.AndroidX.espresso)
+    androidTestImplementation(Libraries.AndroidX.Compose.Ui.uiTestJunit4)
+    debugImplementation(Libraries.AndroidX.Compose.Ui.uiTooling)
 }

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
@@ -15,6 +17,20 @@ configurations.configureEach {
         force("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
     }
 }
+
+gradlePlugin {
+    plugins {
+        register("energyNotesOrchestratorPlugin") {
+            id = "mosaik.orchestrator"
+            implementationClass = "de.db.mt.build.EnergyNotesOrchestratorPlugin"
+        }
+    }
+}
+
+tasks.withType<KotlinCompile>()
+    .configureEach {
+        kotlinOptions { jvmTarget = JavaVersion.VERSION_11.toString() }
+    }
 
 dependencies {
     implementation(gradleApi())

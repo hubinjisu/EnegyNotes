@@ -1,7 +1,3 @@
-import com.bin.build.Libraries.Dagger
-import com.bin.build.Libraries.AndroidX
-import com.bin.build.Libraries.Kotlin
-import com.bin.build.Libraries.Android
 
 //buildscript {
 //    dependencies {

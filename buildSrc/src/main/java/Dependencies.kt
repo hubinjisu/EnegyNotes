@@ -15,14 +15,16 @@ object Plugins {
 
     const val navigationSafeargs = "androidx.navigation.safeargs.kotlin"
     const val kotlinParcelize = "kotlin-parcelize"
+//    const val daggerHilt = "dagger.hilt.android.plugin"
+    const val daggerHilt = "com.google.dagger.hilt.android"
 
     object Versions {
-        const val version = "0.38.0"
+        const val version = "0.42.0"
         const val id = "com.github.ben-manes.versions"
     }
 
     object DependencyGraphGenerator {
-        const val version = "0.5.0"
+        const val version = "0.8.0"
         const val id = "com.vanniktech.dependency.graph.generator"
     }
 
@@ -94,7 +96,7 @@ object Libraries {
         }
 
         object Databinding {
-            private const val version = "7.2.0" // follows AGP versions
+            private const val version = Android.gradlePluginVersion // follows AGP versions
             const val compiler = "androidx.databinding:databinding-compiler:$version"
         }
 
@@ -105,7 +107,7 @@ object Libraries {
         }
 
         object Core {
-            private const val version = "1.6.0"
+            private const val version = "1.8.0"
             const val core = "androidx.core:core:$version"
             const val coreKtx = "androidx.core:core-ktx:$version"
         }
@@ -130,13 +132,13 @@ object Libraries {
             const val sqlite = "androidx.sqlite:sqlite:2.1.0"
         }
 
-        private const val annotationVersion = "1.2.0"
+        private const val annotationVersion = "1.1.0"
         const val annotation = "androidx.annotation:annotation:$annotationVersion"
 
-        private const val constraintLayoutVersion = "2.0.4"
+        private const val constraintLayoutVersion = "2.1.4"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
-        private const val appCompatVersion = "1.3.0"
+        private const val appCompatVersion = "1.4.2"
         const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
 
         private const val swipeRefreshLayoutVersion = "1.1.0"
@@ -229,9 +231,10 @@ object Libraries {
     const val awaitilityKotlin = "org.awaitility:awaitility-kotlin:$awaitilityVersion"
 
     object Dagger {
-        private const val version = "2.42"
+        const val version = "2.42"
         const val dagger = "com.google.dagger:dagger:$version"
         const val androidSupport = "com.google.dagger:dagger-android-support:$version"
+        const val daggerCompiler = "com.google.dagger:dagger-compiler:$version"
         const val android = "com.google.dagger:dagger-android:$version"
         const val androidProcessor = "com.google.dagger:dagger-android-processor:$version"
         const val compiler = "com.google.dagger:dagger-compiler:$version"
@@ -273,8 +276,9 @@ object Libraries {
     private const val leakcanaryVersion = "2.8.1"
     const val leakcanary = "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
 
-    private const val materialVersion = "1.3.0"
+    private const val materialVersion = "1.6.1"
     const val material = "com.google.android.material:material:$materialVersion"
+    const val composeThemeAdapter = "com.google.android.material:compose-theme-adapter:1.1.14"
 
     object Mockito {
         private const val version = "3.11.2"

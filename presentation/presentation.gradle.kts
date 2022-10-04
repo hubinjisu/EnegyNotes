@@ -2,6 +2,7 @@ plugins {
     id(Plugins.androidLibrary)
     kotlin(Plugins.android)
     kotlin(Plugins.kapt)
+    id(Plugins.daggerHilt)
 }
 
 android {
@@ -34,8 +35,6 @@ android {
 }
 
 dependencies {
-
-    implementation(Libraries.AndroidX.Core.coreKtx)
     implementation(Libraries.AndroidX.Lifecycle.lifecycleViewmodelCompose)
     api(Libraries.Dagger.hiltCore)
     api(Libraries.Dagger.hiltAndroid)
@@ -44,4 +43,29 @@ dependencies {
     kapt(Libraries.AndroidX.Hilt.hiltCompiler)
 //    testImplementation("junit:junit:4.13.2")
 //    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+
+    implementation(Libraries.material)
+    implementation(Libraries.AndroidX.Core.coreKtx)
+    implementation(Libraries.AndroidX.Compose.Ui.ui)
+    implementation(Libraries.AndroidX.Compose.Ui.uiToolingPreview)
+    implementation(Libraries.AndroidX.Compose.Ui.uiTestJunit4)
+    implementation(Libraries.AndroidX.Compose.Material.materialIconsCore)
+    api(Libraries.AndroidX.Compose.Material.material)
+    api(Libraries.Dagger.dagger)
+    implementation(Libraries.Dagger.hiltCore)
+    implementation(Libraries.Dagger.hiltAndroid)
+    kapt(Libraries.Dagger.hiltAndroidCompiler)
+    kapt(Libraries.AndroidX.Hilt.hiltCompiler)
+    kapt(Libraries.Dagger.daggerCompiler)
+    kapt(Libraries.AndroidX.Lifecycle.lifecycleCompiler)
+    implementation(Libraries.AndroidX.Hilt.hiltNavigationCompose)
+    implementation(Libraries.AndroidX.Activity.activityCompose)
 }
+
+kapt {
+    correctErrorTypes= true
+}
+
+//hilt {
+//    enableAggregatingTask = true
+//}

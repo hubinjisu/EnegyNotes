@@ -292,9 +292,6 @@ object Libraries {
         }
     }
 
-    private const val mtxCommonAbrechnungVersion = "9.0.14"
-    const val mtxCommonAbrechnung = "de.db.mtx.common:abrechnung:$mtxCommonAbrechnungVersion"
-
     private const val anrWatchdogVersion = "1.4.0"
     const val anrWatchdog = "com.github.anrwatchdog:anrwatchdog:$anrWatchdogVersion"
 
@@ -349,10 +346,6 @@ object Libraries {
         private const val robolectricConfigurationVersion = "4.8"
         const val robolectric = "org.robolectric:robolectric:$robolectricVersion"
         const val annotations = "org.robolectric:annotations:$robolectricVersion"
-
-        object Support {
-            const val config = "de.db.mt.test:robolectric-configuration:$robolectricConfigurationVersion"
-        }
     }
 
     object RxJava {
@@ -384,16 +377,10 @@ object Libraries {
     private const val timberVersion = "5.0.1"
     const val timber = "com.jakewharton.timber:timber:$timberVersion"
 
-    private const val timberStubVersion = "1.0.1"
-    const val timberStub = "de.db.mt:timber-stub:$timberStubVersion"
-
     private const val wifiUtilsVersion = "1.6.6"
     const val wifiUtils = "io.github.thanosfisherman.wifiutils:wifiutils:$wifiUtilsVersion"
 
     const val truth = "com.google.truth:truth:1.1.2"
-
-    private const val secureKeyImportVersion = "1.0.6"
-    const val secureKeyImport = "de.db.mt:secure-key-import:$secureKeyImportVersion"
 
     object SpongyCastle {
         private const val version = "1.53.0.0"

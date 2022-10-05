@@ -21,8 +21,8 @@ configurations.configureEach {
 gradlePlugin {
     plugins {
         register("energyNotesOrchestratorPlugin") {
-            id = "mosaik.orchestrator"
-            implementationClass = "de.db.mt.build.EnergyNotesOrchestratorPlugin"
+            id = "energyNotes.orchestrator"
+            implementationClass = "com.bin.build.EnergyNotesOrchestratorPlugin"
         }
     }
 }

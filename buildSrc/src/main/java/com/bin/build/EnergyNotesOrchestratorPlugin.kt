@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2022, DB Vertrieb GmbH, Mobiles Terminal
- */package com.bin.build
+package com.bin.build
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -31,7 +29,7 @@ class EnergyNotesOrchestratorPlugin : Plugin<Project> {
     }
 
     companion object {
-        private const val PROJECT_GROUP = "de.db.mt"
+        private const val PROJECT_GROUP = "com.bin"
         private val CPD_IGNORED_PROJECTS = listOf<String>()
     }
 }

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2022, DB Vertrieb GmbH, Mobiles Terminal
- */
-
 package com.bin.presentation
 
 import androidx.lifecycle.ViewModel

@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SummaryViewModel @Inject constructor(
+class NotesViewModel @Inject constructor(
     private val routeNavigator: RouteNavigator
 ) : ViewModel(), RouteNavigator by routeNavigator {
     private val _messages = mutableStateListOf<Message>()

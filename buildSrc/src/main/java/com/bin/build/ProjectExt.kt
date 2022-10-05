@@ -1,6 +1,4 @@
-package com.bin.build/*
- * Copyright (c) 2022, DB Vertrieb GmbH, Mobiles Terminal
- */
+package com.bin.build
 
 import org.gradle.api.Project
 import java.io.File

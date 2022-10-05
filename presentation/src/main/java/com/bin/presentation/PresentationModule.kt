@@ -3,7 +3,6 @@ package com.bin.presentation
 import androidx.lifecycle.ViewModel
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
@@ -29,8 +28,8 @@ abstract class PresentationModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(SummaryViewModel::class)
-    abstract fun bindSummaryViewModel(viewModel: SummaryViewModel): ViewModel
+    @ViewModelKey(NotesViewModel::class)
+    abstract fun bindSummaryViewModel(viewModel: NotesViewModel): ViewModel
 
     @Binds
     @IntoMap

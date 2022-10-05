@@ -23,6 +23,21 @@ import androidx.compose.ui.unit.dp
 import com.bin.ui.ui.theme.EnergyNotesTheme
 
 @Composable
+fun ScreenRecord(
+    onNotesClicked: () -> Unit,
+    onAboutClicked: () -> Unit,
+) {
+    CustomScaffold(
+        title = R.string.screen_record,
+        onNotesClicked = onNotesClicked,
+        onRecordClicked = {},
+        onAboutClicked = onAboutClicked
+    ) {
+        RecordList()
+    }
+}
+
+@Composable
 fun RecordList() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         RecordItem(itemName = "Water")

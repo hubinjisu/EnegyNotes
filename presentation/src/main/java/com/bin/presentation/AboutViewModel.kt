@@ -7,6 +7,4 @@ import javax.inject.Inject
 @HiltViewModel
 class AboutViewModel @Inject constructor(
     private val routeNavigator: RouteNavigator
-) : ViewModel(), RouteNavigator by routeNavigator {
-
-}
+) : ViewModel(), RouteNavigator by routeNavigator

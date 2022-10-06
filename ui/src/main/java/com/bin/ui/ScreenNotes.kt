@@ -20,4 +20,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.bin.presentation.model.Message
 import com.bin.ui.ui.theme.EnergyNotesTheme
+
+@Composable
+fun ScreenNotes(
+    messages: List<Message>,
+    onRecordClicked: () -> Unit,
+    onAboutClicked: () -> Unit
+) {
+    CustomScaffold(
+        title = R.string.screen_notes,
+        onNotesClicked = {},
+        onRecordClicked = onRecordClicked,
+        onAboutClicked = onAboutClicked
+    ) {
+        Conversation(messages)
+    }
+}

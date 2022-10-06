@@ -117,18 +117,18 @@ fun DrawerContent(
         )
         Spacer(modifier = Modifier.padding(QUARTER_UNIT))
         DrawerRow(
-            text = R.string.screen_record,
-            icon = R.drawable.ic_record,
-            currentTitle = currentTitle,
-            onClicked = onRecordClicked,
-            scaffoldState = scaffoldState,
-            scope = scope
-        )
-        DrawerRow(
             text = R.string.screen_notes,
             icon = R.drawable.ic_notes,
             currentTitle = currentTitle,
             onClicked = onNotesClicked,
+            scaffoldState = scaffoldState,
+            scope = scope
+        )
+        DrawerRow(
+            text = R.string.screen_record,
+            icon = R.drawable.ic_record,
+            currentTitle = currentTitle,
+            onClicked = onRecordClicked,
             scaffoldState = scaffoldState,
             scope = scope
         )

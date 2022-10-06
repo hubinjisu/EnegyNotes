@@ -4,11 +4,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import com.bin.presentation.NotesViewModel
+import com.bin.presentation.model.Message
 
 @Composable
-fun Conversation(viewModel: NotesViewModel) {
+fun Conversation(messages: List<Message>) {
     LazyColumn {
-        items(viewModel.messages) { message ->
+        items(messages) { message ->
             MessageCard(msg = message)
         }
     }

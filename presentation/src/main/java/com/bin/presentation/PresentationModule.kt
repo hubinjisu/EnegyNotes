@@ -18,11 +18,6 @@ abstract class PresentationModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(DataViewModel::class)
-    abstract fun bindDataViewModel(viewModel: DataViewModel): ViewModel
-
-    @Binds
-    @IntoMap
     @ViewModelKey(RecordViewModel::class)
     abstract fun bindRecodeViewModel(viewModel: RecordViewModel): ViewModel
 

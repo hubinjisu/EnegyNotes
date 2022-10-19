@@ -126,6 +126,7 @@ object Libraries {
             const val roomTesting = "androidx.room:room-testing:$version"
             const val roomRxJava = "androidx.room:room-rxjava3:$version"
             const val roomCommon = "androidx.room:room-common:$version"
+            const val roomKotlin = "androidx.room:room-ktx:$version"
         }
 
         object Sqlite {
@@ -192,10 +193,10 @@ object Libraries {
             const val truthVersion = "1.5.0-alpha07"
             const val core = "androidx.test:core:$version"
             const val orchestrator = "androidx.test:orchestrator:1.4.1"
-            const val runner = "androidx.test:runner:$version"
+            const val runner = "androidx.test:runner:1.5.0-alpha04"
             const val rules = "androidx.test:rules:$version"
             const val extTruth = "androidx.test.ext:truth:$truthVersion"
-            const val extJunit = "androidx.test.ext:junit:1.1.2"
+            const val extJunit = "androidx.test.ext:junit:1.1.3"
         }
 
         private const val workmanagerVersion = "2.7.1"
@@ -261,11 +262,12 @@ object Libraries {
         private const val jUnitVersion = "4.13.2"
         const val jUnit = "junit:junit:$jUnitVersion"
 
-        private const val jupiterVersion = "5.7.1"
-        const val jupiterApi = "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
-        const val jupiterEngine = "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion"
-        const val vintageEngine = "org.junit.vintage:junit-vintage-engine:$jupiterVersion"
-        const val jupiterParams = "org.junit.jupiter:junit-jupiter-params:$jupiterVersion"
+        object Jupiter {
+            private const val version = "5.7.1"
+            const val junitJupiterApi = "org.junit.jupiter:junit-jupiter-api:$version"
+            const val junitJupiterEngine = "org.junit.jupiter:junit-jupiter-engine:$version"
+            const val junitVintageEngine = "org.junit.vintage:junit-vintage-engine:$version"
+        }
     }
 
     private const val kotestVersion = "4.1.3"
@@ -342,8 +344,7 @@ object Libraries {
     }
 
     object Robolectric {
-        private const val robolectricVersion = "4.8"
-        private const val robolectricConfigurationVersion = "4.8"
+        private const val robolectricVersion = "4.8.1"
         const val robolectric = "org.robolectric:robolectric:$robolectricVersion"
         const val annotations = "org.robolectric:annotations:$robolectricVersion"
     }

@@ -40,13 +40,25 @@ android {
     packagingOptions {
         resources {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+            excludes.add("META-INF/*.md")
+            excludes.add("META-INF/*.kotlin_module")
+            pickFirsts.add("LICENSE-EDL-1.0.txt")
+            pickFirsts.add("LICENSE-EPL-1.0.txt")
+            pickFirsts.add("META-INF/io.netty.versions.properties")
+            merges.add("META-INF/INDEX.LIST")
         }
     }
 }
 
-
 dependencies {
-    implementation(project(Projects.ui))
+    api(project(Projects.ui))
+    api(project(Projects.presentation))
+//    api(project(Projects.domain))
+    api(project(Projects.data))
+
+    implementation(Libraries.timber)
+    kapt(Libraries.Dagger.androidProcessor)
+    kapt(Libraries.Dagger.compiler)
     api(Libraries.AndroidX.appCompat)
     implementation(Libraries.composeThemeAdapter)
     implementation(Libraries.material)
@@ -57,6 +69,8 @@ dependencies {
     implementation(Libraries.AndroidX.Compose.Material.materialIconsCore)
     api(Libraries.AndroidX.Compose.Material.material)
     api(Libraries.Dagger.dagger)
+    implementation(Libraries.Dagger.android)
+    implementation(Libraries.Dagger.androidSupport)
     implementation(Libraries.Dagger.hiltCore)
     implementation(Libraries.Dagger.hiltAndroid)
     kapt(Libraries.Dagger.hiltAndroidCompiler)

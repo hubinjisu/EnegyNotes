@@ -1,6 +1,9 @@
 package com.bin.presentation
 
 import androidx.lifecycle.ViewModel
+import com.bin.presentation.viewmodel.AboutViewModel
+import com.bin.presentation.viewmodel.NotesViewModel
+import com.bin.presentation.viewmodel.RecordViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

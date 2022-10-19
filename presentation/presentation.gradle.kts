@@ -35,6 +35,8 @@ android {
 }
 
 dependencies {
+    implementation(project(Projects.domain))
+
     implementation(Libraries.AndroidX.Lifecycle.lifecycleViewmodelCompose)
     api(Libraries.Dagger.hiltCore)
     api(Libraries.Dagger.hiltAndroid)
@@ -60,12 +62,9 @@ dependencies {
     kapt(Libraries.AndroidX.Lifecycle.lifecycleCompiler)
     implementation(Libraries.AndroidX.Hilt.hiltNavigationCompose)
     implementation(Libraries.AndroidX.Activity.activityCompose)
+
 }
 
 kapt {
     correctErrorTypes= true
 }
-
-//hilt {
-//    enableAggregatingTask = true
-//}

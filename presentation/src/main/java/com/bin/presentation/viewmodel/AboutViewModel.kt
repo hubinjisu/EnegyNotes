@@ -1,6 +1,7 @@
-package com.bin.presentation
+package com.bin.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.bin.presentation.RouteNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

@@ -17,6 +17,10 @@ buildscript {
     }
 }
 
+tasks.withType(Test::class.java).configureEach {
+    useJUnitPlatform()
+}
+
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }

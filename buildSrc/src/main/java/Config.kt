@@ -6,6 +6,7 @@ object EnergyNotes {
 object Projects {
     const val app = ":app"
     const val data = ":data"
+    const val domain = ":domain"
     const val presentation = ":presentation"
     const val ui = ":ui"
 }

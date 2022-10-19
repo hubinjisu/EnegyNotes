@@ -3,14 +3,13 @@ package com.bin.ui
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import com.bin.presentation.NotesViewModel
-import com.bin.presentation.model.Message
+import com.bin.presentation.model.EnergyNoteView
 
 @Composable
-fun Conversation(messages: List<Message>) {
+fun EnergyNotes(noteViews: List<EnergyNoteView>) {
     LazyColumn {
-        items(messages) { message ->
-            MessageCard(msg = message)
+        items(noteViews) { noteView ->
+            NoteCard(noteView = noteView)
         }
     }
 }

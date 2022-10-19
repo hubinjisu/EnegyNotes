@@ -18,14 +18,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bin.ui.ui.theme.EnergyNotesTheme
 
 @Composable
 fun ScreenRecord(
     onNotesClicked: () -> Unit,
-    onAboutClicked: () -> Unit
+    onAboutClicked: () -> Unit,
+    onRecordClicked: (waterReading: String, electricityReading: String, gasReading: String) -> Unit
 ) {
     CustomScaffold(
         title = R.string.screen_record,
@@ -33,24 +32,58 @@ fun ScreenRecord(
         onRecordClicked = {},
         onAboutClicked = onAboutClicked
     ) {
-        RecordList()
+        RecordList(onRecordClicked)
     }
 }
 
 @Composable
-fun RecordList() {
+fun RecordList(onRecordClicked: (waterReading: String, electricityReading: String, gasReading: String) -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        RecordItem(itemName = "Water")
-        RecordItem(itemName = "Electricity")
-        RecordItem(itemName = "Gas")
-        BottomButton()
+        var waterReading by remember { mutableStateOf("") }
+        var electricityReading by remember { mutableStateOf("") }
+        var gasReading by remember { mutableStateOf("") }
+        OutlinedTextField(
+            value = waterReading,
+            onValueChange = { waterReading = it },
+            label = { Text("Water") },
+            maxLines = 1,
+            textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(10.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        OutlinedTextField(
+            value = electricityReading,
+            onValueChange = { electricityReading = it },
+            label = { Text("Electricity") },
+            maxLines = 1,
+            textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(10.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        OutlinedTextField(
+            value = gasReading,
+            onValueChange = { gasReading = it },
+            label = { Text("Gas") },
+            maxLines = 1,
+            textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(10.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        Button(
+            onClick = { onRecordClicked(waterReading, electricityReading, gasReading) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp),
+        ) {
+            Text(text = "Record")
+        }
     }
 }
 
 @Composable
 fun BottomButton() {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { },
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp),
@@ -74,10 +107,12 @@ fun RecordItem(itemName: String) {
     )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun previewRecordField() {
-    EnergyNotesTheme {
-        RecordList()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewRecordField() {
+//    EnergyNotesTheme {
+//        RecordList((){
+//
+//        })
+//    }
+//}

@@ -11,6 +11,6 @@ import dagger.hilt.components.SingletonComponent
 @Suppress("UnnecessaryAbstractClass")
 abstract class ApplicationModule {
 
-    @Binds
-    abstract fun bindContext(application: BaseApplication): Context
+//    @Binds
+//    abstract fun bindContext(application: BaseApplication): Context
 }

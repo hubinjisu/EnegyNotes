@@ -3,6 +3,7 @@ package com.bin.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bin.domain.interator.GetEnergyNotesByTypeUseCase
+import com.bin.domain.interator.GetEnergyNotesUseCase
 import com.bin.domain.interator.SaveEnergyNotesUseCase
 import com.bin.domain.model.EnergyType
 import com.bin.presentation.RouteNavigator
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class NotesViewModel @Inject constructor(
     private val routeNavigator: RouteNavigator,
-    private val getEnergyNotesByTypeUseCase: GetEnergyNotesByTypeUseCase,
+    private val getEnergyNotesUseCase: GetEnergyNotesUseCase,
     private val energyNoteViewMapper: EnergyNoteViewMapper
 ) : ViewModel(), RouteNavigator by routeNavigator {
 
@@ -33,7 +34,7 @@ class NotesViewModel @Inject constructor(
 
     private fun initNotes() {
         viewModelScope.launch {
-            getEnergyNotesByTypeUseCase.invoke(EnergyType.ELECTRICITY).collectLatest { result ->
+            getEnergyNotesUseCase.invoke().collectLatest { result ->
                 _energyNotes.value = result.getOrDefault(emptyList()).map {
                     energyNoteViewMapper.mapToEnergyNoteView(it)
                 }

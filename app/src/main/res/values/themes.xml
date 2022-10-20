@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="BaseTheme.EnergyNotes" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="BaseTheme.EnergyNotes" parent="Theme.MaterialComponents.Light.Bridge">
         <item name="android:statusBarColor">@color/purple_700</item>
+
+        <item name="materialCalendarStyle">@style/Widget.MaterialComponents.MaterialCalendar</item>
+        <item name="materialCalendarFullscreenTheme">
+            @style/ThemeOverlay.MaterialComponents.MaterialCalendar.Fullscreen
+        </item>
+        <item name="materialCalendarTheme">@style/ThemeOverlay.MaterialComponents.MaterialCalendar</item>
     </style>
 </resources>

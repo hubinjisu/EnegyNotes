@@ -22,9 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bin.presentation.model.EnergyNoteView
 import com.bin.presentation.model.EnergyTypeView
+import com.bin.ui.DateTimeUtil.formatRecordTime
 import com.bin.ui.ui.theme.EnergyNotesTheme
 import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
 
 @Composable
 fun NoteCard(noteView: EnergyNoteView) {
@@ -102,8 +102,6 @@ private fun getEnergyIcon(energyTypeView: EnergyTypeView) = when (energyTypeView
     EnergyTypeView.GAS -> R.drawable.ic_gas
 }
 
-private fun formatRecordTime(recordTime: ZonedDateTime) =
-    recordTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
 
 @Preview(name = "Light Mode")
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Dark Mode")

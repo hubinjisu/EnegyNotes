@@ -1,6 +1,8 @@
 package com.bin.ui
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
@@ -18,7 +20,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.bin.presentation.model.EnergyTypeView
+import com.bin.ui.DateTimeUtil.convertToZonedDateTime
+import com.bin.ui.ui.theme.EnergyNotesTheme
+import java.time.ZonedDateTime
 
 @Composable
 fun ScreenRecord(
@@ -37,38 +44,51 @@ fun ScreenRecord(
 }
 
 @Composable
-fun RecordList(onRecordClicked: (waterReading: String, electricityReading: String, gasReading: String) -> Unit) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+fun RecordList(
+    onRecordClicked: (waterReading: String, electricityReading: String, gasReading: String) -> Unit
+) {
+    Column(
+        Modifier.fillMaxHeight(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
         var waterReading by remember { mutableStateOf("") }
         var electricityReading by remember { mutableStateOf("") }
         var gasReading by remember { mutableStateOf("") }
-        OutlinedTextField(
-            value = waterReading,
-            onValueChange = { waterReading = it },
-            label = { Text("Water") },
-            maxLines = 1,
-            textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
-            modifier = Modifier.padding(10.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = electricityReading,
-            onValueChange = { electricityReading = it },
-            label = { Text("Electricity") },
-            maxLines = 1,
-            textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
-            modifier = Modifier.padding(10.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = gasReading,
-            onValueChange = { gasReading = it },
-            label = { Text("Gas") },
-            maxLines = 1,
-            textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
-            modifier = Modifier.padding(10.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
+        var datePicked: ZonedDateTime? by remember { mutableStateOf(null) }
+        val updateDate = { date: Long? -> datePicked = date?.let { convertToZonedDateTime(it) } }
+
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            DatePickerView(datePicked, updateDate)
+
+            OutlinedTextField(
+                value = waterReading,
+                onValueChange = { waterReading = it },
+                label = { Text(EnergyTypeView.WATER.name) },
+                maxLines = 1,
+                textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
+                modifier = Modifier.padding(10.dp),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
+            OutlinedTextField(
+                value = electricityReading,
+                onValueChange = { electricityReading = it },
+                label = { Text(EnergyTypeView.ELECTRICITY.name) },
+                maxLines = 1,
+                textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
+                modifier = Modifier.padding(10.dp),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
+            OutlinedTextField(
+                value = gasReading,
+                onValueChange = { gasReading = it },
+                label = { Text(EnergyTypeView.GAS.name) },
+                maxLines = 1,
+                textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
+                modifier = Modifier.padding(10.dp),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
+        }
         Button(
             onClick = { onRecordClicked(waterReading, electricityReading, gasReading) },
             modifier = Modifier
@@ -77,18 +97,6 @@ fun RecordList(onRecordClicked: (waterReading: String, electricityReading: Strin
         ) {
             Text(text = "Record")
         }
-    }
-}
-
-@Composable
-fun BottomButton() {
-    Button(
-        onClick = { },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(10.dp),
-    ) {
-        Text(text = "Record")
     }
 }
 
@@ -107,12 +115,10 @@ fun RecordItem(itemName: String) {
     )
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewRecordField() {
-//    EnergyNotesTheme {
-//        RecordList((){
-//
-//        })
-//    }
-//}
+@Preview(showBackground = true)
+@Composable
+fun PreviewRecordField() {
+    EnergyNotesTheme {
+        RecordList(onRecordClicked = { _, _, _ -> })
+    }
+}

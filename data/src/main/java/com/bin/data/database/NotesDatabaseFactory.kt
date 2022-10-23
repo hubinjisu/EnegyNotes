@@ -6,9 +6,6 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
-import com.bin.data.converter.ZonedDateTimeConverter
-import java.time.ZoneId
-import java.time.ZonedDateTime
 import javax.inject.Inject
 import timber.log.Timber
 
@@ -59,18 +56,6 @@ class NotesDatabaseFactory @Inject constructor(
      * Befuellt die Datenbank initial mit Daten.
      */
     private fun prepopulateTables(db: SupportSQLiteDatabase) {
-        val time = ZonedDateTimeConverter.fromZonedDateTime(
-            ZonedDateTime.of(
-                2022,
-                9,
-                22,
-                10,
-                10,
-                11,
-                11,
-                ZoneId.systemDefault()
-            )
-        )
-        db.execSQL("INSERT INTO energy_note ('reading', 'timestamp', 'type') VALUES (100, '$time', 'GAS')")
+        db.execSQL("INSERT INTO energy_note ('reading', 'recordDate', 'type') VALUES (100, '2022-09-30', 'GAS')")
     }
 }

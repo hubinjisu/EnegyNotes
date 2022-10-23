@@ -74,6 +74,7 @@ dependencies {
     testImplementation(Libraries.JUnit.jUnit)
     testImplementation(Libraries.AndroidX.Test.extJunit)
     testImplementation(Libraries.AndroidX.espresso)
+    testImplementation(Libraries.AndroidX.Test.extTruth)
     androidTestImplementation(Libraries.AndroidX.Compose.Ui.uiTestJunit4)
     debugImplementation(Libraries.AndroidX.Compose.Ui.uiTooling)
 }

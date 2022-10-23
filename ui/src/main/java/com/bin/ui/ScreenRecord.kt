@@ -23,15 +23,16 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bin.presentation.model.EnergyTypeView
-import com.bin.ui.DateTimeUtil.convertToZonedDateTime
+import com.bin.ui.DateTimeUtil.formatMilliseconds
+import com.bin.ui.DateTimeUtil.toLocalDate
 import com.bin.ui.ui.theme.EnergyNotesTheme
-import java.time.ZonedDateTime
+import java.time.LocalDate
 
 @Composable
 fun ScreenRecord(
     onNotesClicked: () -> Unit,
     onAboutClicked: () -> Unit,
-    onRecordClicked: (waterReading: String, electricityReading: String, gasReading: String) -> Unit
+    onRecordClicked: (String, String, String, LocalDate) -> Unit
 ) {
     CustomScaffold(
         title = R.string.screen_record,
@@ -44,9 +45,7 @@ fun ScreenRecord(
 }
 
 @Composable
-fun RecordList(
-    onRecordClicked: (waterReading: String, electricityReading: String, gasReading: String) -> Unit
-) {
+fun RecordList(onRecordClicked: (String, String, String, LocalDate) -> Unit) {
     Column(
         Modifier.fillMaxHeight(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -55,10 +54,10 @@ fun RecordList(
         var waterReading by remember { mutableStateOf("") }
         var electricityReading by remember { mutableStateOf("") }
         var gasReading by remember { mutableStateOf("") }
-        var datePicked: ZonedDateTime? by remember { mutableStateOf(null) }
-        val updateDate = { date: Long? -> datePicked = date?.let { convertToZonedDateTime(it) } }
+        var datePicked: LocalDate by remember { mutableStateOf(LocalDate.now()) }
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            val updateDate = { date: Long -> datePicked = toLocalDate(formatMilliseconds(date)) }
             DatePickerView(datePicked, updateDate)
 
             OutlinedTextField(
@@ -90,7 +89,7 @@ fun RecordList(
             )
         }
         Button(
-            onClick = { onRecordClicked(waterReading, electricityReading, gasReading) },
+            onClick = { onRecordClicked(waterReading, electricityReading, gasReading, datePicked) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
@@ -119,6 +118,6 @@ fun RecordItem(itemName: String) {
 @Composable
 fun PreviewRecordField() {
     EnergyNotesTheme {
-        RecordList(onRecordClicked = { _, _, _ -> })
+        RecordList(onRecordClicked = { _, _, _, _ -> })
     }
 }

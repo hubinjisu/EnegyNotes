@@ -34,10 +34,11 @@ object RecordRoute : NavRoute<RecordViewModel> {
     override fun Content(viewModel: RecordViewModel) = ScreenRecord(
         onNotesClicked = { viewModel.navigateToRoute(NotesRoute.route) },
         onAboutClicked = { viewModel.navigateToRoute(AboutRoute.route) },
-        onRecordClicked = { waterReading, electricityReading, gasReading ->
-            viewModel.recordWaterNote(waterReading.toLong())
-            viewModel.recordElectricityNote(electricityReading.toLong())
-            viewModel.recordGasNote(gasReading.toLong())
+        onRecordClicked = { waterReading, electricityReading, gasReading, recordDate ->
+            viewModel.recordWaterNote(waterReading.toLong(), recordDate)
+            viewModel.recordElectricityNote(electricityReading.toLong(), recordDate)
+            viewModel.recordGasNote(gasReading.toLong(), recordDate)
+            viewModel.navigateToRoute(NotesRoute.route)
         }
     )
 }

@@ -6,8 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.bin.data.model.EnergyNoteEntity
 import com.bin.domain.model.EnergyType
-import java.time.ZonedDateTime
-import java.util.concurrent.Flow
+import java.time.LocalDate
 
 @Dao
 interface EnergyNoteDao {
@@ -18,12 +17,12 @@ interface EnergyNoteDao {
     @Query("select * from energy_note")
     suspend fun getNotes(): List<EnergyNoteEntity>
 
-    @Query("select * from energy_note where type = :type order by timestamp desc")
+    @Query("select * from energy_note where type = :type order by recordDate desc")
     suspend fun getNotesByType(type: EnergyType): List<EnergyNoteEntity>
 
     @Query("DELETE FROM energy_note")
     suspend fun deleteAll()
 
-    @Query("DELETE FROM energy_note where timestamp = :timestamp")
-    suspend fun delete(timestamp: ZonedDateTime)
+    @Query("DELETE FROM energy_note where recordDate = :recordDate")
+    suspend fun delete(recordDate: LocalDate)
 }

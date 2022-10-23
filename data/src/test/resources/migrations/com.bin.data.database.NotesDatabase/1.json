@@ -2,18 +2,12 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "54b5fdc202323f0d8ad3416c8315abeb",
+    "identityHash": "72d8b4f4af4aea48270befb9f489950a",
     "entities": [
       {
         "tableName": "energy_note",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `reading` INTEGER NOT NULL, `timestamp` TEXT NOT NULL, `type` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`reading` INTEGER NOT NULL, `recordDate` TEXT NOT NULL, `type` TEXT NOT NULL, PRIMARY KEY(`recordDate`, `type`))",
         "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "reading",
             "columnName": "reading",
@@ -21,8 +15,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "timestamp",
-            "columnName": "timestamp",
+            "fieldPath": "recordDate",
+            "columnName": "recordDate",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -35,9 +29,10 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "recordDate",
+            "type"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -46,7 +41,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '54b5fdc202323f0d8ad3416c8315abeb')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '72d8b4f4af4aea48270befb9f489950a')"
     ]
   }
 }

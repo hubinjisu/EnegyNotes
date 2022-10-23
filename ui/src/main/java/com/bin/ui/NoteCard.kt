@@ -22,9 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bin.presentation.model.EnergyNoteView
 import com.bin.presentation.model.EnergyTypeView
-import com.bin.ui.DateTimeUtil.formatRecordTime
+import com.bin.ui.DateTimeUtil.formatLocalDate
 import com.bin.ui.ui.theme.EnergyNotesTheme
-import java.time.ZonedDateTime
+import java.time.LocalDate
 
 @Composable
 fun NoteCard(noteView: EnergyNoteView) {
@@ -62,7 +62,7 @@ fun NoteCard(noteView: EnergyNoteView) {
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = formatRecordTime(noteView.recordDate),
+                        text = formatLocalDate(noteView.recordDate),
                         color = MaterialTheme.colors.secondaryVariant,
                         style = MaterialTheme.typography.subtitle2
                     )
@@ -111,7 +111,7 @@ fun DefaultPreview() {
         NoteCard(
             noteView = EnergyNoteView(
                 100,
-                ZonedDateTime.now(),
+                LocalDate.parse("2022-09-30"),
                 EnergyTypeView.WATER,
                 "10 $",
                 "100 $"

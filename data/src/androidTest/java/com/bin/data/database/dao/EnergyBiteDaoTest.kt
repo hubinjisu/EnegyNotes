@@ -11,7 +11,7 @@ import com.bin.data.database.NotesDatabase
 import com.bin.data.model.EnergyNoteEntity
 import com.bin.domain.model.EnergyType
 import com.google.common.truth.Truth.assertThat
-import java.time.ZonedDateTime
+import java.time.LocalDate
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
@@ -46,7 +46,7 @@ class EnergyBiteDaoTest {
     fun test_save() {
         runBlockingTest {
             // given
-            val givenEnergyNote = EnergyNoteEntity(1, 10, ZonedDateTime.now(), EnergyType.ELECTRICITY)
+            val givenEnergyNote = EnergyNoteEntity(10, LocalDate.now(), EnergyType.ELECTRICITY)
             // when
             energyNoteDao.save(givenEnergyNote)
             // then

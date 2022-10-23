@@ -6,9 +6,8 @@ import com.bin.domain.interator.SaveEnergyNotesUseCase
 import com.bin.domain.model.EnergyNote
 import com.bin.domain.model.EnergyType
 import com.bin.presentation.RouteNavigator
-import com.bin.presentation.mapper.EnergyNoteViewMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.time.ZonedDateTime
+import java.time.LocalDate
 import javax.inject.Inject
 import kotlinx.coroutines.launch
 
@@ -18,24 +17,24 @@ class RecordViewModel @Inject constructor(
     private val routeNavigator: RouteNavigator
 ) : ViewModel(), RouteNavigator by routeNavigator {
 
-    fun recordWaterNote(reading: Long) {
-        recordEnergyNote(reading, EnergyType.WATER)
+    fun recordWaterNote(reading: Long, recordDate: LocalDate) {
+        recordEnergyNote(reading, recordDate, EnergyType.WATER)
     }
 
-    fun recordGasNote(reading: Long) {
-        recordEnergyNote(reading, EnergyType.GAS)
+    fun recordGasNote(reading: Long, recordDate: LocalDate) {
+        recordEnergyNote(reading, recordDate, EnergyType.GAS)
     }
 
-    fun recordElectricityNote(reading: Long) {
-        recordEnergyNote(reading, EnergyType.ELECTRICITY)
+    fun recordElectricityNote(reading: Long, recordDate: LocalDate) {
+        recordEnergyNote(reading, recordDate, EnergyType.ELECTRICITY)
     }
 
-    private fun recordEnergyNote(reading: Long, type: EnergyType) {
+    private fun recordEnergyNote(reading: Long, recordDate: LocalDate, type: EnergyType) {
         viewModelScope.launch {
             saveEnergyNotesUseCase.invoke(
                 EnergyNote(
                     reading = reading,
-                    recordDate = ZonedDateTime.now(),
+                    recordDate = recordDate,
                     type = type
                 )
             )

@@ -19,22 +19,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bin.ui.DateTimeUtil.formatRecordTime
+import com.bin.ui.DateTimeUtil.formatLocalDate
 import com.bin.ui.ui.theme.EnergyNotesTheme
 import com.google.android.material.datepicker.MaterialDatePicker
-import java.time.ZonedDateTime
+import java.time.LocalDate
+import java.util.Calendar
+import java.util.TimeZone
 
 @Composable
 fun DatePickerView(
-    datePicked: ZonedDateTime?,
-    updatedDate: (date: Long?) -> Unit
+    datePicked: LocalDate,
+    updatedDate: (date: Long) -> Unit
 ) {
     val activity = LocalContext.current as AppCompatActivity
     Box(
         modifier = Modifier
             .padding(top = 10.dp)
             .clickable {
-                showDatePicker(activity, updatedDate)
+                showDatePicker(activity, datePicked, updatedDate)
             }
     ) {
         Card(
@@ -50,7 +52,7 @@ fun DatePickerView(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = datePicked?.let { formatRecordTime(it) } ?: "Date Picker",
+                    text = formatLocalDate(datePicked),
                     color = MaterialTheme.colors.onSurface
                 )
 
@@ -69,9 +71,13 @@ fun DatePickerView(
 
 private fun showDatePicker(
     activity: AppCompatActivity,
-    updatedDate: (Long?) -> Unit
+    datePicked: LocalDate,
+    updatedDate: (Long) -> Unit
 ) {
-    val picker = MaterialDatePicker.Builder.datePicker().build()
+    val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    calendar.set(datePicked.year, datePicked.month.value - 1, datePicked.dayOfMonth)
+    val picker = MaterialDatePicker.Builder.datePicker().setSelection(calendar.timeInMillis)
+        .setTheme(R.style.MaterialCalendarTheme).build()
     picker.show(activity.supportFragmentManager, picker.toString())
     picker.addOnPositiveButtonClickListener {
         updatedDate(it)
@@ -82,6 +88,6 @@ private fun showDatePicker(
 @Composable
 fun DatePickerViewPreviewer() {
     EnergyNotesTheme {
-        DatePickerView(null) {}
+        DatePickerView(LocalDate.now()) {}
     }
 }

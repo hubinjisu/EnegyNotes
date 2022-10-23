@@ -1,15 +1,23 @@
 package com.bin.ui
 
-import java.time.Instant
-import java.time.ZoneId
-import java.time.ZonedDateTime
+import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.Locale
+import java.util.TimeZone
 
 object DateTimeUtil {
 
-    fun formatRecordTime(recordTime: ZonedDateTime): String =
-        recordTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+    private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
-    fun convertToZonedDateTime(dateTime: Long): ZonedDateTime =
-        ZonedDateTime.ofInstant(Instant.ofEpochSecond(dateTime), ZoneId.systemDefault())
+    fun formatLocalDate(localDate: LocalDate): String =
+        localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+    fun formatMilliseconds(milliseconds: Long): String =
+        SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).apply {
+            timeZone = TimeZone.getTimeZone("UTC")
+        }.format(milliseconds)
+
+    fun toLocalDate(localDate: String): LocalDate =
+        LocalDate.parse(localDate, formatter)
 }

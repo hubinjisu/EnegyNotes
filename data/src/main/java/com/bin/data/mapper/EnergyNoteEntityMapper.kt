@@ -9,7 +9,7 @@ class EnergyNoteEntityMapper @Inject constructor() {
     fun mapFromEntity(entity: EnergyNoteEntity): EnergyNote = with(entity) {
         EnergyNote(
             reading = reading,
-            recordDate = timestamp,
+            recordDate = recordDate,
             type = type
         )
     }
@@ -17,7 +17,7 @@ class EnergyNoteEntityMapper @Inject constructor() {
     fun mapToEntity(note: EnergyNote): EnergyNoteEntity = with(note) {
         EnergyNoteEntity(
             reading = reading,
-            timestamp = recordDate,
+            recordDate = recordDate,
             type = type
         )
     }

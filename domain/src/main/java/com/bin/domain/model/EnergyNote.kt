@@ -1,9 +1,9 @@
 package com.bin.domain.model
 
-import java.time.ZonedDateTime
+import java.time.LocalDate
 
 data class EnergyNote(
     val reading: Long,
-    val recordDate: ZonedDateTime,
+    val recordDate: LocalDate,
     val type: EnergyType
 )

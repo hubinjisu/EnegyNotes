@@ -60,7 +60,7 @@ fun CustomScaffold(
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = { MosaikTopBar(false, title, {}, scaffoldState) },
+        topBar = { NotesTopBar(false, title, {}, scaffoldState) },
         content = { content() },
         drawerContent = {
             DrawerContent(
@@ -87,7 +87,7 @@ fun CustomScaffold(
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = { MosaikTopBar(true, title, onBackClicked, scaffoldState) },
+        topBar = { NotesTopBar(true, title, onBackClicked, scaffoldState) },
         content = { content() }
     )
 }
@@ -108,7 +108,7 @@ fun DrawerContent(
             .background(Cool_Grey_100)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.nav_header),
+            painter = painterResource(id = R.drawable.navi_header),
             modifier = Modifier
                 .fillMaxWidth()
                 .size(167.dp),
@@ -188,7 +188,7 @@ fun DrawerRow(
 }
 
 @Composable
-private fun MosaikTopBar(
+private fun NotesTopBar(
     hasBackNavgation: Boolean,
     @StringRes title: Int,
     onBackClicked: () -> Unit,

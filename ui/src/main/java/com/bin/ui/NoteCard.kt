@@ -24,6 +24,7 @@ import com.bin.presentation.model.EnergyNoteView
 import com.bin.presentation.model.EnergyTypeView
 import com.bin.ui.DateTimeUtil.formatLocalDate
 import com.bin.ui.ui.theme.EnergyNotesTheme
+import java.math.BigDecimal
 import java.time.LocalDate
 
 @Composable
@@ -67,7 +68,7 @@ fun NoteCard(noteView: EnergyNoteView) {
                         style = MaterialTheme.typography.subtitle2
                     )
                     Text(
-                        text = noteView.reading.toString(),
+                        text = noteView.reading.toPlainString(),
                         color = MaterialTheme.colors.secondaryVariant,
                         style = MaterialTheme.typography.subtitle2
                     )
@@ -110,7 +111,7 @@ fun DefaultPreview() {
     EnergyNotesTheme {
         NoteCard(
             noteView = EnergyNoteView(
-                100,
+                BigDecimal.valueOf(100.7256),
                 LocalDate.parse("2022-09-30"),
                 EnergyTypeView.WATER,
                 "10 $",

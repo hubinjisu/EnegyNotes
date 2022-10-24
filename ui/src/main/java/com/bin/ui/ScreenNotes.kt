@@ -5,7 +5,7 @@ import com.bin.presentation.model.EnergyNoteView
 
 @Composable
 fun ScreenNotes(
-    messages: List<EnergyNoteView>,
+    noteViews: List<EnergyNoteView>,
     onRecordClicked: () -> Unit,
     onAboutClicked: () -> Unit
 ) {
@@ -15,6 +15,6 @@ fun ScreenNotes(
         onRecordClicked = onRecordClicked,
         onAboutClicked = onAboutClicked
     ) {
-        EnergyNotes(messages)
+        EnergyNotes(noteViews)
     }
 }

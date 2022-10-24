@@ -35,12 +35,14 @@ object RecordRoute : NavRoute<RecordViewModel> {
         onNotesClicked = { viewModel.navigateToRoute(NotesRoute.route) },
         onAboutClicked = { viewModel.navigateToRoute(AboutRoute.route) },
         onRecordClicked = { waterReading, electricityReading, gasReading, recordDate ->
-            viewModel.recordWaterNote(waterReading.toLong(), recordDate)
-            viewModel.recordElectricityNote(electricityReading.toLong(), recordDate)
-            viewModel.recordGasNote(gasReading.toLong(), recordDate)
+            viewModel.recordWaterNote(waterReading.toReadingData(), recordDate)
+            viewModel.recordElectricityNote(electricityReading.toReadingData(), recordDate)
+            viewModel.recordGasNote(gasReading.toReadingData(), recordDate)
             viewModel.navigateToRoute(NotesRoute.route)
         }
     )
+
+    private fun String.toReadingData() = this.replace(",", ".").toBigDecimalOrNull()
 }
 
 object AboutRoute : NavRoute<AboutViewModel> {

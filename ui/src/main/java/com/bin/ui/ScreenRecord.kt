@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -67,7 +68,10 @@ fun RecordList(onRecordClicked: (String, String, String, LocalDate) -> Unit) {
                 maxLines = 1,
                 textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
                 modifier = Modifier.padding(10.dp),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
+                )
             )
             OutlinedTextField(
                 value = electricityReading,
@@ -76,7 +80,10 @@ fun RecordList(onRecordClicked: (String, String, String, LocalDate) -> Unit) {
                 maxLines = 1,
                 textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
                 modifier = Modifier.padding(10.dp),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
+                )
             )
             OutlinedTextField(
                 value = gasReading,
@@ -85,7 +92,10 @@ fun RecordList(onRecordClicked: (String, String, String, LocalDate) -> Unit) {
                 maxLines = 1,
                 textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
                 modifier = Modifier.padding(10.dp),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Done
+                )
             )
         }
         Button(

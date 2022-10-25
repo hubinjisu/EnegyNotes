@@ -9,7 +9,9 @@ import com.bin.presentation.viewmodel.RecordViewModel
 import com.bin.ui.ScreenAbout
 import com.bin.ui.ScreenNotes
 import com.bin.ui.ScreenRecord
+import com.google.accompanist.pager.ExperimentalPagerApi
 
+@OptIn(ExperimentalPagerApi::class)
 object NotesRoute : NavRoute<NotesViewModel> {
     override val route = "notes/"
 

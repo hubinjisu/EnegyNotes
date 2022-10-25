@@ -48,6 +48,9 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
 }
 
 dependencies {
@@ -70,6 +73,8 @@ dependencies {
     kapt(Libraries.AndroidX.Lifecycle.lifecycleCompiler)
     implementation(Libraries.AndroidX.Hilt.hiltNavigationCompose)
     implementation(Libraries.AndroidX.Activity.activityCompose)
+    implementation("com.google.accompanist:accompanist-pager:0.25.0") // Pager
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.25.0")
 
     testImplementation(Libraries.JUnit.jUnit)
     testImplementation(Libraries.AndroidX.Test.extJunit)
@@ -80,5 +85,5 @@ dependencies {
 }
 
 kapt {
-    correctErrorTypes= true
+    correctErrorTypes = true
 }

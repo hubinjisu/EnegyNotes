@@ -8,6 +8,7 @@ import com.bin.domain.model.EnergyType
 import com.bin.presentation.RouteNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.math.BigDecimal
+import java.math.RoundingMode
 import java.time.LocalDate
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -33,7 +34,9 @@ class RecordViewModel @Inject constructor(
         viewModelScope.launch {
             saveEnergyNotesUseCase.invoke(
                 EnergyNote(
-                    reading = reading, recordDate = recordDate, type = type
+                    reading = reading.setScale(0, RoundingMode.HALF_UP).longValueExact(),
+                    recordDate = recordDate,
+                    type = type
                 )
             )
         }

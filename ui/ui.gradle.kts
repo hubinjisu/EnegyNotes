@@ -75,6 +75,7 @@ dependencies {
     implementation(Libraries.AndroidX.Activity.activityCompose)
     implementation("com.google.accompanist:accompanist-pager:0.25.0") // Pager
     implementation("com.google.accompanist:accompanist-pager-indicators:0.25.0")
+    implementation ("com.github.jaikeerthick:Composable-Graphs:v1.0")
 
     testImplementation(Libraries.JUnit.jUnit)
     testImplementation(Libraries.AndroidX.Test.extJunit)

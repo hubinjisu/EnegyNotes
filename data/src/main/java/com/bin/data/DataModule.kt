@@ -2,6 +2,7 @@ package com.bin.data
 
 import android.content.Context
 import com.bin.data.dao.EnergyNoteDao
+import com.bin.data.dao.UserDao
 import com.bin.data.database.NotesDatabase
 import com.bin.data.database.NotesDatabaseFactory
 import com.bin.data.mapper.EnergyNoteEntityMapper
@@ -36,7 +37,10 @@ abstract class DataModule {
             notesDatabaseFactory.createDatabase()
 
         @Provides
-        internal fun provideSchichtDao(db: NotesDatabase): EnergyNoteDao = db.energyNoteDao()
+        internal fun provideEnergyNoteDao(db: NotesDatabase): EnergyNoteDao = db.energyNoteDao()
+
+        @Provides
+        internal fun provideUserDao(db: NotesDatabase): UserDao = db.userDao()
 
         @Provides
         fun provideEnergyNoteRepository(

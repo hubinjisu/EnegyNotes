@@ -18,7 +18,6 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
-import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.Locale
 import kotlinx.coroutines.launch
@@ -106,7 +105,7 @@ fun PeviewContent() {
     EnergyNotes(
         listOf(
             EnergyNoteView(
-                BigDecimal.valueOf(10),
+                10,
                 LocalDate.now(),
                 EnergyTypeView.WATER,
                 "cost",
@@ -123,21 +122,21 @@ fun PeviewContent() {
 fun PeviewTabContent() {
     val testDaten = listOf(
         EnergyNoteView(
-            BigDecimal.valueOf(10),
+            10,
             LocalDate.now(),
             EnergyTypeView.WATER,
             "cost",
             "totalCost"
         ),
         EnergyNoteView(
-            BigDecimal.valueOf(10),
+            10,
             LocalDate.now(),
             EnergyTypeView.ELECTRICITY,
             "cost",
             "totalCost"
         ),
         EnergyNoteView(
-            BigDecimal.valueOf(10),
+            10,
             LocalDate.now(),
             EnergyTypeView.GAS,
             "cost",

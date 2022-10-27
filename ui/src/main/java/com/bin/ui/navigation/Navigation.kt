@@ -9,7 +9,7 @@ fun Navigation() {
     val navController = rememberNavController()
     NavHost(navController, startDestination = NotesRoute.route) {
         NotesRoute.composable(this, navController)
+        SummaryRoute.composable(this, navController)
         RecordRoute.composable(this, navController)
-        AboutRoute.composable(this, navController)
     }
 }

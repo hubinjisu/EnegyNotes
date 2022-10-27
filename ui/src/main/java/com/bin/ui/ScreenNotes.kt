@@ -108,8 +108,7 @@ fun PeviewContent() {
                 10,
                 LocalDate.now(),
                 EnergyTypeView.WATER,
-                "cost",
-                "totalCost"
+                "cost"
             )
         )
     )
@@ -125,22 +124,19 @@ fun PeviewTabContent() {
             10,
             LocalDate.now(),
             EnergyTypeView.WATER,
-            "cost",
-            "totalCost"
+            "cost"
         ),
         EnergyNoteView(
             10,
             LocalDate.now(),
             EnergyTypeView.ELECTRICITY,
-            "cost",
-            "totalCost"
+            "cost"
         ),
         EnergyNoteView(
             10,
             LocalDate.now(),
             EnergyTypeView.GAS,
-            "cost",
-            "totalCost"
+            "cost"
         )
     )
     TabsContent(noteViews = testDaten, pagerState = rememberPagerState())

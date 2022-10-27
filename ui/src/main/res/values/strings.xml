@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">EnergyNotes</string>
 
-    <string name="screen_about">About</string>
+    <string name="screen_summary">Summary</string>
     <string name="screen_record">Record</string>
     <string name="screen_notes">Notes</string>
 </resources>

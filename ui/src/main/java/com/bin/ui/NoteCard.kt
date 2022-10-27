@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bin.presentation.model.EnergyNoteView
 import com.bin.presentation.model.EnergyTypeView
 import com.bin.ui.DateTimeUtil.formatLocalDate
@@ -64,33 +65,43 @@ fun NoteCard(noteView: EnergyNoteView) {
                     Text(
                         text = formatLocalDate(noteView.recordDate),
                         color = MaterialTheme.colors.secondaryVariant,
-                        style = MaterialTheme.typography.subtitle2
+                        style = MaterialTheme.typography.subtitle2,
+                        fontSize = 20.sp
                     )
                     Text(
                         text = noteView.reading.toString(),
                         color = MaterialTheme.colors.secondaryVariant,
-                        style = MaterialTheme.typography.subtitle2
+                        style = MaterialTheme.typography.subtitle2,
+                        fontSize = 20.sp
                     )
                 }
 
-                Row(
-                    Modifier
-                        .padding(horizontal = 8.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = noteView.totalCost,
-                        modifier = Modifier.padding(all = 4.dp),
-                        style = MaterialTheme.typography.body2,
-                    )
-                    Text(
-                        text = noteView.cost,
-                        modifier = Modifier.padding(all = 4.dp),
-                        style = MaterialTheme.typography.body2,
-                    )
-                }
+                Text(
+                    text = noteView.cost,
+                    modifier = Modifier
+                        .padding(all = 4.dp)
+                        .align(Alignment.End),
+                    style = MaterialTheme.typography.body2,
+                )
+//
+//                Row(
+//                    Modifier
+//                        .padding(horizontal = 8.dp)
+//                        .fillMaxWidth(),
+//                    verticalAlignment = Alignment.CenterVertically,
+//                    horizontalArrangement = Arrangement.SpaceBetween
+//                ) {
+//                    Text(
+//                        text = noteView.totalCost,
+//                        modifier = Modifier.padding(all = 4.dp),
+//                        style = MaterialTheme.typography.body2,
+//                    )
+//                    Text(
+//                        text = noteView.cost,
+//                        modifier = Modifier.padding(all = 4.dp),
+//                        style = MaterialTheme.typography.body2,
+//                    )
+//                }
             }
         }
     }
@@ -112,8 +123,7 @@ fun DefaultPreview() {
                 100,
                 LocalDate.parse("2022-09-30"),
                 EnergyTypeView.WATER,
-                "10 $",
-                "100 $"
+                "10 $"
             )
         )
     }

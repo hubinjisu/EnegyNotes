@@ -12,8 +12,7 @@ class EnergyNoteViewMapper @Inject constructor() {
             reading = reading,
             recordDate = note.recordDate,
             energyType = EnergyTypeView.valueOf(note.type.name),
-            cost = "cost",
-            totalCost = "1233"
+            cost = "cost"
         )
     }
 }

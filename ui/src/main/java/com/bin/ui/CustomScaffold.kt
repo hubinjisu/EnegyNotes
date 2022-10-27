@@ -125,18 +125,18 @@ fun DrawerContent(
             scope = scope
         )
         DrawerRow(
-            text = R.string.screen_record,
-            icon = R.drawable.ic_record,
+            text = R.string.screen_summary,
+            icon = R.drawable.ic_about,
             currentTitle = currentTitle,
-            onClicked = onRecordClicked,
+            onClicked = onAboutClicked,
             scaffoldState = scaffoldState,
             scope = scope
         )
         DrawerRow(
-            text = R.string.screen_about,
-            icon = R.drawable.ic_about,
+            text = R.string.screen_record,
+            icon = R.drawable.ic_record,
             currentTitle = currentTitle,
-            onClicked = onAboutClicked,
+            onClicked = onRecordClicked,
             scaffoldState = scaffoldState,
             scope = scope
         )
@@ -261,7 +261,7 @@ private fun DrawerPreview() {
                 .fillMaxHeight()
         ) {
             DrawerContent(
-                currentTitle = R.string.screen_about,
+                currentTitle = R.string.screen_summary,
                 onNotesClicked = {},
                 onRecordClicked = {},
                 onAboutClicked = {},

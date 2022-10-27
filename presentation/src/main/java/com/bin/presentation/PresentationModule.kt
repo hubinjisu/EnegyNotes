@@ -1,7 +1,7 @@
 package com.bin.presentation
 
 import androidx.lifecycle.ViewModel
-import com.bin.presentation.viewmodel.AboutViewModel
+import com.bin.presentation.viewmodel.SummaryViewModel
 import com.bin.presentation.viewmodel.NotesViewModel
 import com.bin.presentation.viewmodel.RecordViewModel
 import dagger.Binds
@@ -31,6 +31,6 @@ abstract class PresentationModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(AboutViewModel::class)
-    abstract fun bindAboutViewModel(viewModel: AboutViewModel): ViewModel
+    @ViewModelKey(SummaryViewModel::class)
+    abstract fun bindAboutViewModel(viewModel: SummaryViewModel): ViewModel
 }

@@ -2,10 +2,7 @@ package com.bin.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bin.domain.interator.GetEnergyNotesByTypeUseCase
 import com.bin.domain.interator.GetEnergyNotesUseCase
-import com.bin.domain.interator.SaveEnergyNotesUseCase
-import com.bin.domain.model.EnergyType
 import com.bin.presentation.RouteNavigator
 import com.bin.presentation.mapper.EnergyNoteViewMapper
 import com.bin.presentation.model.EnergyNoteView

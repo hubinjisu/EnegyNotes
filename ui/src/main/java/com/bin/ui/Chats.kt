@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.bin.presentation.model.EnergyNoteView
+import com.bin.presentation.model.EnergyTypeView
 import com.bin.ui.DateTimeUtil.formatLocalDate
 import com.jaikeerthick.composable_graphs.color.Gradient2
 import com.jaikeerthick.composable_graphs.color.Gradient3
@@ -56,11 +57,10 @@ fun BarChart(nodesData: List<EnergyNoteView>) {
 
 @Composable
 fun LineChart(nodesData: List<EnergyNoteView>) {
-    val recordTimeRowData = nodesData.map { formatLocalDate(it.recordDate) }
-    val xAxisData = recordTimeRowData.subList(1, recordTimeRowData.size)
-    val yAxisData = nodesData.map { it.reading }.zipWithNext { a, b -> b - a }
+    val xAxisData = nodesData.map { formatLocalDate(it.recordDate) }
+    val yAxisData = nodesData.map { it.reading }
     Box(modifier = Modifier.fillMaxWidth()) {
-        val clickedValue: MutableState<Pair<Any, Any>?> = remember { mutableStateOf(null) }
+        val clickedValue: MutableState<Pair<Any, Any>?> = remember { mutableStateOf(xAxisData[0] to yAxisData[0]) }
         val style = LineGraphStyle(
             visibility = LinearGraphVisibility(
                 isHeaderVisible = true,
@@ -85,28 +85,38 @@ fun LineChart(nodesData: List<EnergyNoteView>) {
             style = style,
             onPointClicked = {
                 clickedValue.value = it
-            },
-            header = {
-                Column {
-                    Text(
-                        text = "The monthly ${nodesData[0].energyType.name.lowercase()} usage",
-                        color = GraphAccent,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                }
             }
+//            header = {
+//                Column {
+//                    Text(
+//                        text = "The monthly ${nodesData[0].energyType.name.lowercase()} usage",
+//                        color = GraphAccent,
+//                        fontWeight = FontWeight.SemiBold
+//                    )
+//                }
+//            }
         )
         clickedValue.value?.let {
             Row(
                 modifier = Modifier
                     .padding(all = 5.dp)
             ) {
+                val cost = nodesData.find { note ->
+                    formatLocalDate(note.recordDate) == it.first
+                }?.cost ?: ""
+                val type = nodesData[0].energyType
                 Text(
-                    text = "${it.first}: ${it.second}",
-                    color = GraphAccent2,
+                    text = "${it.first} use ${type.name.lowercase()} ${it.second} ${getUnit(type)} cost $cost",
+                    color = GraphAccent,
                     fontWeight = FontWeight.SemiBold
                 )
             }
         }
     }
+}
+
+private fun getUnit(energyType: EnergyTypeView) = when (energyType) {
+    EnergyTypeView.WATER -> "m3"
+    EnergyTypeView.ELECTRICITY -> "kwh"
+    EnergyTypeView.GAS -> "m3"
 }

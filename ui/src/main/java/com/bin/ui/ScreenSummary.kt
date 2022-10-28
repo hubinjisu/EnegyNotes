@@ -16,6 +16,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
+import java.math.BigDecimal
 
 @OptIn(ExperimentalPagerApi::class)
 @ExperimentalPagerApi
@@ -49,15 +50,9 @@ fun ScreenSummary(
 fun SummaryTabsContent(noteViews: List<EnergyNoteView>, pagerState: PagerState) {
     HorizontalPager(state = pagerState, count = 3) { page ->
         val notesData = when (page) {
-            0 -> {
-                noteViews.filter { it.energyType == EnergyTypeView.WATER }
-            }
-            1 -> {
-                noteViews.filter { it.energyType == EnergyTypeView.ELECTRICITY }
-            }
-            2 -> {
-                noteViews.filter { it.energyType == EnergyTypeView.GAS }
-            }
+            0 -> noteViews.filter { it.energyType == EnergyTypeView.WATER }.extractMonthlyData()
+            1 -> noteViews.filter { it.energyType == EnergyTypeView.ELECTRICITY }.extractMonthlyData()
+            2 -> noteViews.filter { it.energyType == EnergyTypeView.GAS }.extractMonthlyData()
             else -> emptyList()
         }
 
@@ -71,4 +66,10 @@ fun SummaryTabsContent(noteViews: List<EnergyNoteView>, pagerState: PagerState) 
             LineChart(notesData)
         }
     }
+}
+
+private fun List<EnergyNoteView>.extractMonthlyData() = this.zipWithNext { a, b ->
+    val monthlyUsage = b.reading - a.reading
+    val monthlyCost = BigDecimal.valueOf(b.cost.toDouble()) - BigDecimal.valueOf(a.cost.toDouble())
+    b.copy(reading = monthlyUsage, cost = "$monthlyCost €")
 }

@@ -18,6 +18,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
+import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.Locale
 import kotlinx.coroutines.launch
@@ -81,11 +82,17 @@ fun EnergyTabs(pagerState: PagerState) {
 fun TabsContent(noteViews: List<EnergyNoteView>, pagerState: PagerState) {
     HorizontalPager(state = pagerState, count = 3) { page ->
         when (page) {
-            0 -> EnergyNotes(noteViews.filter { it.energyType == EnergyTypeView.WATER })
-            1 -> EnergyNotes(noteViews.filter { it.energyType == EnergyTypeView.ELECTRICITY })
-            2 -> EnergyNotes(noteViews.filter { it.energyType == EnergyTypeView.GAS })
+            0 -> EnergyNotes(noteViews.filter { it.energyType == EnergyTypeView.WATER }.extractMonthlyData())
+            1 -> EnergyNotes(noteViews.filter { it.energyType == EnergyTypeView.ELECTRICITY }.extractMonthlyData())
+            2 -> EnergyNotes(noteViews.filter { it.energyType == EnergyTypeView.GAS }.extractMonthlyData())
         }
     }
+}
+
+private fun List<EnergyNoteView>.extractMonthlyData() = this.zipWithNext { a, b ->
+    val monthlyUsage = b.reading - a.reading
+    val monthlyCost = BigDecimal.valueOf(b.cost.toDouble()) - BigDecimal.valueOf(a.cost.toDouble())
+    b.copy(reading = monthlyUsage, cost = "$monthlyCost €")
 }
 
 private fun String.capitalize() =

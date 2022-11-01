@@ -52,7 +52,7 @@ android {
 
 dependencies {
     api(project(Projects.ui))
-    api(project(Projects.presentation))
+//    api(project(Projects.presentation))
 //    api(project(Projects.domain))
     api(project(Projects.data))
 

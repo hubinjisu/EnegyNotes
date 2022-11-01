@@ -41,11 +41,5 @@ abstract class DataModule {
 
         @Provides
         internal fun provideUserDao(db: NotesDatabase): UserDao = db.userDao()
-
-        @Provides
-        fun provideEnergyNoteRepository(
-            ioDispatcher: CoroutineDispatcher,
-            energyNoteDao: EnergyNoteDao
-        ): EnergyNoteRepositoryImpl = EnergyNoteRepositoryImpl(ioDispatcher, energyNoteDao, EnergyNoteEntityMapper())
     }
 }

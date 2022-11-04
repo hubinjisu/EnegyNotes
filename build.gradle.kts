@@ -7,6 +7,7 @@ plugins {
 
 buildscript {
     repositories {
+        google()
         mavenCentral()
     }
     dependencies {
@@ -14,6 +15,14 @@ buildscript {
 //        classpath(Libraries.Kotlin.gradlePlugin)
 //        classpath(Libraries.AndroidX.Navigation.navigationSafeArgsGradlePlugin)
         classpath(Libraries.Dagger.hiltAndroidGradlePlugin)
+        classpath("com.google.gms:google-services:4.3.14")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
     }
 }
 

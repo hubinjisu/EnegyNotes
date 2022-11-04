@@ -3,13 +3,14 @@ plugins {
     kotlin(Plugins.android)
     kotlin(Plugins.kapt)
     id(Plugins.daggerHilt)
+    id(Plugins.googleServices)
 }
 
 android {
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "com.bin.energynotes"
+        applicationId = "com.bin.app"
         minSdk = 28
         targetSdk = 32
         versionCode = 1
@@ -56,6 +57,8 @@ dependencies {
 //    api(project(Projects.domain))
     api(project(Projects.data))
 
+    implementation(platform(Libraries.Firebase.firebaseBom))
+    implementation(Libraries.Firebase.databaseKtx)
     implementation(Libraries.timber)
     kapt(Libraries.Dagger.androidProcessor)
     kapt(Libraries.Dagger.compiler)

@@ -88,6 +88,8 @@ android {
 dependencies {
     implementation(project(Projects.domain))
 
+    implementation(platform(Libraries.Firebase.firebaseBom))
+    implementation(Libraries.Firebase.databaseKtx)
 //    implementation(Libraries.javaxAnnotation)
 //    api(Libraries.Jackson.jakartaAnnotations)
     implementation(Libraries.AndroidX.annotation)
@@ -120,6 +122,8 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
 
+    testImplementation(platform(Libraries.Firebase.firebaseBom))
+    testImplementation(Libraries.Firebase.databaseKtx)
     testImplementation(Libraries.JUnit.jUnit)
     androidTestImplementation(Libraries.AndroidX.Test.extJunit)
     androidTestImplementation(Libraries.AndroidX.ArchCore.coreTesting)

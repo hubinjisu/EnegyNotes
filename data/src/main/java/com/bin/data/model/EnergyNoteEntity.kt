@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.bin.domain.model.EnergyType
+import com.google.firebase.database.IgnoreExtraProperties
 import java.time.LocalDate
 
 @Entity(

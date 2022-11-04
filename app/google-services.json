@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "568634223840",
+    "project_id": "energynotes-babf2",
+    "storage_bucket": "energynotes-babf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568634223840:android:d8ef3f7d1f44691d6ab485",
+        "android_client_info": {
+          "package_name": "com.bin.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568634223840-9ok3vr89iuuojqsu2bdjmbtq9a5rhhsn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDihFDN6xoXkhQzKyMEMVhA_N4oHo3P7To"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568634223840-9ok3vr89iuuojqsu2bdjmbtq9a5rhhsn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

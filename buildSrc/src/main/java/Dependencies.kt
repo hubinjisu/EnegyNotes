@@ -5,6 +5,7 @@ import org.gradle.kotlin.dsl.exclude
 object Plugins {
     const val androidApplication = "com.android.application"
     const val androidLibrary = "com.android.library"
+    const val googleServices = "com.google.gms.google-services"
     const val android = "android"
     const val jvm = "jvm"
     const val kapt = "kapt"
@@ -34,7 +35,10 @@ object Plugins {
     }
 
     object Firebase {
-        const val crashlyticsPlugin = "com.google.firebase.crashlytics"
+        const val firebaseBom = "com.google.firebase:firebase-bom:31.0.2"
+        const val crashlyticsKtx = "com.google.firebase:firebase-crashlytics-ktx"
+        const val messagingKtx = "com.google.firebase:firebase-messaging-ktx"
+        const val analyticsKtx = "com.google.firebase:firebase-analytics-ktx"
     }
 
     object DependencyAnalysis {
@@ -400,6 +404,7 @@ object Libraries {
         const val firebaseBom = "com.google.firebase:firebase-bom:29.0.0"
         const val crashlyticsKtx = "com.google.firebase:firebase-crashlytics-ktx"
         const val messagingKtx = "com.google.firebase:firebase-messaging-ktx"
+        const val databaseKtx = "com.google.firebase:firebase-database-ktx"
     }
 
     object Scanbot {

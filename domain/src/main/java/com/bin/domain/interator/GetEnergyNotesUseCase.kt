@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 class GetEnergyNotesUseCase @Inject constructor(
     private val energyNoteRepository: EnergyNoteRepository
 ) {
-    suspend operator fun invoke(): Flow<Result<List<EnergyNote>>> =
+    suspend operator fun invoke(): Flow<List<EnergyNote>> =
         energyNoteRepository.getEnergyNotes()
 }

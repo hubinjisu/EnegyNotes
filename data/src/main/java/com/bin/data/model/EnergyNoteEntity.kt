@@ -2,21 +2,11 @@ package com.bin.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.bin.domain.model.EnergyType
-import com.google.firebase.database.IgnoreExtraProperties
 import java.time.LocalDate
 
-@Entity(
-    tableName = "energy_note",
-    foreignKeys = [ForeignKey(
-        entity = UserEntity::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("user_id"),
-        onDelete = ForeignKey.CASCADE
-    )]
-)
+@Entity(tableName = "energy_note")
 data class EnergyNoteEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -26,7 +16,5 @@ data class EnergyNoteEntity(
     @ColumnInfo(name = "recordDate")
     val recordDate: LocalDate,
     @ColumnInfo(name = "type")
-    val type: EnergyType,
-    @ColumnInfo(name = "user_id")
-    val userId: Long = 1
+    val type: EnergyType
 )

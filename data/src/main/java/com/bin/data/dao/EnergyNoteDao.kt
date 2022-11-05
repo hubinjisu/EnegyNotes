@@ -12,7 +12,7 @@ import java.time.LocalDate
 interface EnergyNoteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun save(energyNoteEntity: EnergyNoteEntity)
+    suspend fun save(energyNoteEntity: EnergyNoteEntity): Long
 
     @Query("select * from energy_note")
     suspend fun getNotes(): List<EnergyNoteEntity>

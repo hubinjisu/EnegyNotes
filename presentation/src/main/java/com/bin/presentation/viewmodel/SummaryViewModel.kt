@@ -32,7 +32,7 @@ class SummaryViewModel @Inject constructor(
     private fun initNotes() {
         viewModelScope.launch {
             getEnergyNotesUseCase.invoke().collectLatest { result ->
-                _energyNotes.value = result.getOrDefault(emptyList()).map {
+                _energyNotes.value = result.map {
                     energyNoteViewMapper.mapToEnergyNoteView(it)
                 }
             }

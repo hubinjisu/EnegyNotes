@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "0581b3cc6e278ec2c4a12f64b7715665",
+    "identityHash": "34752127358f363ff6c6b9e6bbeec633",
     "entities": [
       {
         "tableName": "energy_note",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `reading` INTEGER NOT NULL, `recordDate` TEXT NOT NULL, `type` TEXT NOT NULL, `user_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `reading` INTEGER NOT NULL, `recordDate` TEXT NOT NULL, `type` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -31,12 +31,6 @@
             "columnName": "type",
             "affinity": "TEXT",
             "notNull": true
-          },
-          {
-            "fieldPath": "userId",
-            "columnName": "user_id",
-            "affinity": "INTEGER",
-            "notNull": true
           }
         ],
         "primaryKey": {
@@ -46,19 +40,7 @@
           "autoGenerate": true
         },
         "indices": [],
-        "foreignKeys": [
-          {
-            "table": "user",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "user_id"
-            ],
-            "referencedColumns": [
-              "id"
-            ]
-          }
-        ]
+        "foreignKeys": []
       },
       {
         "tableName": "user",
@@ -90,7 +72,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0581b3cc6e278ec2c4a12f64b7715665')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '34752127358f363ff6c6b9e6bbeec633')"
     ]
   }
 }

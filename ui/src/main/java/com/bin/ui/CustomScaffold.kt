@@ -106,6 +106,7 @@ fun DrawerContent(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
+            .background(MaterialTheme.colors.primary)
     ) {
         Image(
             painter = painterResource(id = R.drawable.navi_header),
@@ -153,9 +154,9 @@ fun DrawerRow(
     scope: CoroutineScope
 ) {
     val color = if (text == currentTitle) {
-        Blue_100
+        MaterialTheme.colors.primaryVariant
     } else {
-        Cool_Grey_100
+        MaterialTheme.colors.primary
     }
 
     Row(
@@ -182,8 +183,7 @@ fun DrawerRow(
                 .align(alignment = Alignment.CenterVertically),
             text = stringResource(id = text),
             style = MaterialTheme.typography.subtitle1.copy(
-                fontWeight = FontWeight.Bold,
-                color = Color.Black
+                fontWeight = FontWeight.Bold
             )
         )
         Spacer(modifier = Modifier.padding(QUARTER_UNIT))
@@ -205,8 +205,7 @@ private fun NotesTopBar(
             } else {
                 DrawerButton(scaffoldState)
             }
-        },
-        backgroundColor = Color.White
+        }
     )
 }
 

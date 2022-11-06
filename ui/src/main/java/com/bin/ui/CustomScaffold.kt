@@ -1,6 +1,7 @@
 package com.bin.ui
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
@@ -105,7 +106,6 @@ fun DrawerContent(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(Cool_Grey_100)
     ) {
         Image(
             painter = painterResource(id = R.drawable.navi_header),
@@ -181,7 +181,10 @@ fun DrawerRow(
                 .padding(vertical = ONE_UNIT)
                 .align(alignment = Alignment.CenterVertically),
             text = stringResource(id = text),
-            style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Bold)
+            style = MaterialTheme.typography.subtitle1.copy(
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
         )
         Spacer(modifier = Modifier.padding(QUARTER_UNIT))
     }
@@ -245,7 +248,7 @@ private fun ScaffoldPreview() {
 }
 
 @SuppressLint("CoroutineCreationDuringComposition")
-@Preview("DrawerPreview", device = Devices.NEXUS_5X, showBackground = true)
+@Preview("DrawerPreview", uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.NEXUS_5X, showBackground = true)
 @Composable
 private fun DrawerPreview() {
     val scope = rememberCoroutineScope()

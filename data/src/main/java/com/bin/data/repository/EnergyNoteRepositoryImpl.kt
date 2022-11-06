@@ -18,6 +18,7 @@ import com.google.firebase.ktx.Firebase
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -36,6 +37,8 @@ class EnergyNoteRepositoryImpl @Inject constructor(
     override suspend fun getEnergyNotes(): Flow<List<EnergyNote>> = flow {
 //        emit(Result.success(energyNoteDao.getNotes().map { energyNoteEntityMapper.mapFromEntity(it) }))
         emit(getRemoteEnergyNotes())
+    }.distinctUntilChanged { old, new ->
+        old == new
     }.flowOn(dispatcher)
 
     private suspend fun getRemoteEnergyNotes(): List<EnergyNote> =

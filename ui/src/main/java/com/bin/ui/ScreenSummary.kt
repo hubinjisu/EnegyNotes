@@ -62,7 +62,8 @@ fun SummaryTabsContent(noteViews: List<EnergyNoteView>, pagerState: PagerState) 
                 .background(color = Color.White),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-//            BarChart(notesData)
+            val size = notesData.size
+            BarChart(notesData.subList(size - 12, size))
             LineChart(notesData)
         }
     }

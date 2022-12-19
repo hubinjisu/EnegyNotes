@@ -34,7 +34,7 @@ import com.jaikeerthick.composable_graphs.style.LinearGraphVisibility
 
 @Composable
 fun BarChart(nodesData: List<EnergyNoteView>) {
-    val numberList = nodesData.map { it.reading }.zipWithNext { a, b -> b - a }
+    val numberList = nodesData.map { it.reading }
     val style = BarGraphStyle(
         visibility = BarGraphVisibility(
             isYAxisLabelVisible = true
@@ -46,7 +46,7 @@ fun BarChart(nodesData: List<EnergyNoteView>) {
         header = {
             Column {
                 Text(
-                    text = "The monthly energy usage",
+                    text = "The last 12 months energy usage",
                     color = GraphAccent,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -99,7 +99,7 @@ fun LineChart(nodesData: List<EnergyNoteView>) {
         clickedValue.value?.let {
             Row(
                 modifier = Modifier
-                    .padding(all = 5.dp)
+                    .padding(all = 1.dp)
             ) {
                 val cost = nodesData.find { note ->
                     formatLocalDate(note.recordDate) == it.first
